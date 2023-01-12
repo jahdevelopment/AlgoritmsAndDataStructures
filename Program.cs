@@ -30,3 +30,9 @@ foreach (char c in newArray)
     }
 }
 Console.WriteLine($"\nThe leter {charToCount} is repeated {repetitions} times in the list of words");
+
+int totalCharacters = newArray.Length;
+
+double percentage = ((double)repetitions / (double)totalCharacters * 100);
+
+Console.WriteLine($"This is the {percentage}% of the total of characters");
