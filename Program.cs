@@ -1,21 +1,20 @@
-﻿string initialStr = "Programmatic Python";
+﻿using System.Text;
 
-string str = "";
+string initialStr = "Programmatic Python";
 
-string repChars;
-
-
+StringBuilder mySB = new StringBuilder();
 
 for (int i = 0; i < initialStr.Length; i++)
 {
     for (int j = i + 1; j < initialStr.Length; j++)
     {
-        if (initialStr[i] == initialStr[j])
+        if (initialStr[i].Equals(initialStr[j]))
         {
-            repChars = initialStr[j].ToString().ToLower();
-            Console.Write(repChars);
+            mySB.Append(initialStr[i]);
         }
     }
 }
+
+Console.WriteLine(mySB.ToString().ToLower());
 
 
