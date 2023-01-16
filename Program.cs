@@ -68,7 +68,7 @@ string paragraph = "Lorem Ipsum is simply dummy text of the printing and typeset
 
 Console.WriteLine(paragraph);
 
-string[] findingLongest = paragraph.Split(' ');
+string[] findingLongest = paragraph.Split(' ', ',', '.');
 
 int lengthOfWord = 0;
 
