@@ -14,7 +14,11 @@ for (int i = 0; i < initialStr.Length; i++)
     {
         if (initialStr[i].Equals(initialStr[j]))
         {
-            mySB.Append(initialStr[i]);
+            while (!mySB.ToString().Contains(initialStr[i]))
+            {
+                mySB.Append(initialStr[i]);
+            }
+            
         }
     }
 }
