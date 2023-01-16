@@ -1,5 +1,9 @@
 ﻿using System.Text;
 
+Console.WriteLine("==================== FIRST PROBLEM ====================\n");
+
+// A program that produces an array of all of the characters that appear more than once in a string:
+
 string initialStr = "Programmatic Python";
 
 StringBuilder mySB = new StringBuilder();
@@ -16,5 +20,28 @@ for (int i = 0; i < initialStr.Length; i++)
 }
 
 Console.WriteLine(mySB.ToString().ToLower());
+
+
+Console.WriteLine("\n==================== SECOND PROBLEM ====================\n");
+
+// A program returns an array of strings that are unique words found in the argument:
+
+string phrase = "to be or not to be";
+
+string[] wordsList = phrase.Split(' ');
+
+string[] newList = new string[wordsList.Length];
+
+int count = 0;
+
+foreach (string word in wordsList)
+{
+    if (!newList.Contains(word))
+    {
+        newList[count] = word;
+        count++;
+        Console.WriteLine(word);
+    }
+}
 
 
