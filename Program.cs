@@ -45,3 +45,16 @@ foreach (string word in wordsList)
 }
 
 
+Console.WriteLine("\n==================== THIRD PROBLEM ====================\n");
+
+//A program that reverses a provided string:
+
+string inOrderStr = "juan alberto hernandez acosta";
+
+string inReverseStr = "";
+
+for (int i = inOrderStr.Length - 1; i >= 0; i--)
+{
+    inReverseStr = string.Concat(inOrderStr[i]);
+    Console.Write(inOrderStr[i]);
+}
