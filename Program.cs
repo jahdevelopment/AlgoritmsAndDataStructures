@@ -58,3 +58,31 @@ for (int i = inOrderStr.Length - 1; i >= 0; i--)
     inReverseStr = string.Concat(inOrderStr[i]);
     Console.Write(inOrderStr[i]);
 }
+
+
+Console.WriteLine("\n\n==================== FOURTH PROBLEM ====================\n");
+
+// A program that finds the longest unbroken word in a string and prints it
+
+string paragraph = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+Console.WriteLine(paragraph);
+
+string[] findingLongest = paragraph.Split(' ');
+
+int lengthOfWord = 0;
+
+string selectedWord = "";
+
+for (int i = 0;i < findingLongest.Length; i++)
+{
+    if (findingLongest[i].Length >= lengthOfWord)
+    {
+        lengthOfWord = findingLongest[i].Length;
+        selectedWord = string.Concat(findingLongest[i]);
+    }
+}
+Console.WriteLine($"\nThe longest word of the paragraph is: {selectedWord} " +
+        $"with {lengthOfWord} characters.");
+
+Console.WriteLine("\n\n==================== END OF LAB 2 ====================\n");
