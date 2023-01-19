@@ -89,7 +89,7 @@ for (int i = 0;i < HighestGrade.Count; i++)
 Console.WriteLine($"\nThe highest grade is {bestGrade}, it was found in class {bestClass}.\n");
 
 
-Console.WriteLine("\n\n---------------- THIRD PROBLEM ----------------\n");
+Console.WriteLine("\n---------------- THIRD PROBLEM ----------------\n");
 
 List<int> orderByLooping = new List<int>();
 
