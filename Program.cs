@@ -97,8 +97,6 @@ while (continueRunning)
                     Console.WriteLine($"Now Playing \"{nowPlaying}\"\n");
 
                     Console.WriteLine($"Next Song - {nextToPlay}\n");
-
-                    
                 }
             }
         }
