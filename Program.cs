@@ -24,13 +24,14 @@ while (continueRunning)
     ///////// MAIN MENU
     
     Console.WriteLine("\nChoose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
-    
-   menu = Int32.Parse(Console.ReadLine());
 
-    string startPlaying = "";
+    menu = Int32.Parse(Console.ReadLine());
 
     string[] playListArray = playList.ToArray();
 
+    //Console.WriteLine("\nChoose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
+
+    //menu= Int32.Parse(Console.ReadLine());
 
     if (menu == 1)
     {
@@ -51,52 +52,46 @@ while (continueRunning)
 
         Console.WriteLine($"\n\"{addSong}\" added to your playlist");
 
-        if (playList.Count == 1) 
+        if (playList.Count >= 1)
         {
-            nowPlaying = addSong;
+            nextToPlay = playList.Peek();
 
-            nextToPlay = nowPlaying;
-
-            Console.WriteLine($"Next Song - {nextToPlay}\n");
+            Console.WriteLine($"Next song to play - \"{nextToPlay}\"\n");
         }
-        else if (playList.Count > 2)
-        {
-            for (int i = 0; i < playListArray.Length; i++)
-            {
-                if (playListArray[i] == nextToPlay)
-                {
-                    string nextSong = playListArray[i + 1];
-
-                    Console.WriteLine($"Next Song to play - {nextSong}\n");
-
-                }
-            }
-        }
+        //else if (playList.Count > 1)
+        //{
+        //    Console.WriteLine($"Next song to play - \"{nextToPlay}\"\n");
+        //}
+     
 
     }
     else if (menu == 2)
     {
-        if (playList.Count == 1)
+        if (nowPlaying == "")
         {
-            nowPlaying = addSong;
+            nowPlaying = playList.Peek();
 
             nextToPlay = nowPlaying;
 
-            Console.WriteLine($"Next song - {nextToPlay}\n");
+            Console.WriteLine($"Now playing \"{nowPlaying}\'");
+
+            Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
         }
-        else 
+        else
         {
             for (int i = 0; i < playListArray.Length; i++)
             {
+                int counter = 1;
+
                 if (playListArray[i] == nowPlaying)
                 {
-                    nowPlaying = playListArray[i + 1];
+                    nowPlaying = playListArray[i +1];
 
-                    nextToPlay = playListArray[i + 2];
+                    //nextToPlay = playListArray[i + 1];
 
-                    Console.WriteLine($"Now Playing \"{nowPlaying}\"\n");
+                    Console.WriteLine($"Now Playing \"{nowPlaying}\"");
 
-                    Console.WriteLine($"Next Song - {nextToPlay}\n");
+                    //Console.WriteLine($"Next Song - {nextToPlay}\n");
                 }
             }
         }
@@ -112,13 +107,19 @@ while (continueRunning)
     else if (menu == 5)
     {
         Console.WriteLine("Closing the Music Player, bye!");
-        continueRunning= false;
+
+        continueRunning = false;
     }
     else
     {
         Console.WriteLine("Invalid selection, try again!");
         //Console.WriteLine("Choose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
     }
+    
+    
+
+
+    
 }
 
 
