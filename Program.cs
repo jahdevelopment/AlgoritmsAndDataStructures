@@ -6,6 +6,8 @@ Console.WriteLine("|||||||||||||||||||||||||||||| MUSIC PLAYER |||||||||||||||||
 
 Queue<string> playList = new Queue<string>();
 
+Stack<string> playing = new Stack<string>();
+
 int menu = 0;
 
 bool continueRunning = true;
@@ -37,7 +39,7 @@ while (continueRunning)
     {
         //////// START ADDING SONGS TO THE PLAYLIST
 
-        Console.Write("Enter Song Name: > ");
+        Console.Write("\nEnter Song Name: > ");
 
         addSong = Console.ReadLine();
 
@@ -79,24 +81,48 @@ while (continueRunning)
         {
             nowPlaying = playList.Dequeue();
 
+            nextToPlay = playList.Peek();
+            
             Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
 
-            nextToPlay = playList.Peek();
-
             Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
-            
         }
     }
     else if (menu == 3)
     {
         if (playList.Count < 3)
         {
-        
+            Console.WriteLine("\nYou don't have enough songs to skip one. Try adding more to your playlist.");
+        }
+        else
+        {
+            nowPlaying= playList.Dequeue();
+
+            string nextInTheList = playList.Dequeue();
+
+            nextToPlay = playList.Peek();
+
+            Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
+
+            Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
         }
     }
     else if (menu == 4)
     {
+        if (playList.Count < 2)
+        {
+            Console.WriteLine("\nYou don't have enough songs to rewind one. Try adding more to your playlist.");
+        }
+        else
+        {
+            nextToPlay = playList.Peek();
+            
+            nowPlaying = playList.Dequeue();
 
+            Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
+
+            Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
+        }
     }
     else if (menu == 5)
     {
@@ -107,13 +133,7 @@ while (continueRunning)
     else
     {
         Console.WriteLine("Invalid selection, try again!");
-        //Console.WriteLine("Choose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
     }
-    
-    
-
-
-    
 }
 
 
