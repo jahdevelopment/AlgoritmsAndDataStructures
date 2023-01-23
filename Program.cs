@@ -22,7 +22,7 @@ string previousSong = "";
 while (continueRunning)
 {
     ///////// MAIN MENU
-    
+
     Console.WriteLine("\nChoose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
 
     menu = Int32.Parse(Console.ReadLine());
@@ -35,7 +35,7 @@ while (continueRunning)
 
     if (menu == 1)
     {
-        //////// START ADDING AND PLAYING PLAYLIST
+        //////// START ADDING SONGS TO THE PLAYLIST
 
         Console.Write("Enter Song Name: > ");
 
@@ -58,47 +58,41 @@ while (continueRunning)
 
             Console.WriteLine($"Next song to play - \"{nextToPlay}\"\n");
         }
-        //else if (playList.Count > 1)
-        //{
-        //    Console.WriteLine($"Next song to play - \"{nextToPlay}\"\n");
-        //}
-     
-
     }
     else if (menu == 2)
     {
-        if (nowPlaying == "")
+        ///////////// PLAY THE PLAYLIST
+
+        if (playList.Count == 0)
         {
-            nowPlaying = playList.Peek();
+            Console.WriteLine("you don't have songs in your playlist, first go to option 1 of the menu and add some songs");
+        }
+        else if (playList.Count == 1)
+        {
+            nowPlaying = playList.Dequeue();
 
-            nextToPlay = nowPlaying;
+            Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
 
-            Console.WriteLine($"Now playing \"{nowPlaying}\'");
+            Console.WriteLine($"Next song - none queued\r\n\r\n. . . // add more songs");
+        }
+        else if (playList.Count >= 1)
+        {
+            nowPlaying = playList.Dequeue();
+
+            Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
+
+            nextToPlay = playList.Peek();
 
             Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
-        }
-        else
-        {
-            for (int i = 0; i < playListArray.Length; i++)
-            {
-                int counter = 1;
-
-                if (playListArray[i] == nowPlaying)
-                {
-                    nowPlaying = playListArray[i +1];
-
-                    //nextToPlay = playListArray[i + 1];
-
-                    Console.WriteLine($"Now Playing \"{nowPlaying}\"");
-
-                    //Console.WriteLine($"Next Song - {nextToPlay}\n");
-                }
-            }
+            
         }
     }
     else if (menu == 3)
     {
-
+        if (playList.Count < 3)
+        {
+        
+        }
     }
     else if (menu == 4)
     {
