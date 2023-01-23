@@ -6,7 +6,7 @@ Console.WriteLine("|||||||||||||||||||||||||||||| MUSIC PLAYER |||||||||||||||||
 
 Queue<string> playList = new Queue<string>();
 
-Stack<string> playing = new Stack<string>();
+Stack<string> currentlyPlaying = new Stack<string>();
 
 int menu = 0;
 
@@ -73,6 +73,8 @@ while (continueRunning)
         {
             nowPlaying = playList.Dequeue();
 
+            currentlyPlaying.Push(nowPlaying);
+
             Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
 
             Console.WriteLine($"Next song - none queued\r\n\r\n. . . // add more songs");
@@ -82,10 +84,13 @@ while (continueRunning)
             nowPlaying = playList.Dequeue();
 
             nextToPlay = playList.Peek();
-            
+
+            currentlyPlaying.Push(nextToPlay);
+
             Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
 
             Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
+
         }
     }
     else if (menu == 3)
@@ -96,7 +101,7 @@ while (continueRunning)
         }
         else
         {
-            nowPlaying= playList.Dequeue();
+            nowPlaying = playList.Dequeue();
 
             string nextInTheList = playList.Dequeue();
 
@@ -109,30 +114,30 @@ while (continueRunning)
     }
     else if (menu == 4)
     {
-        if (playList.Count < 2)
+        if (currentlyPlaying.Count <= 1)
         {
             Console.WriteLine("\nYou don't have enough songs to rewind one. Try adding more to your playlist.");
         }
         else
         {
-            nextToPlay = playList.Peek();
             
-            nowPlaying = playList.Dequeue();
+            currentlyPlaying.Pop();
 
-            Console.WriteLine($"\nNow playing \"{nowPlaying}\'");
+            nowPlaying = currentlyPlaying.Peek();
 
-            Console.WriteLine($"Next song - \"{nextToPlay}\"\n");
+            Console.WriteLine($"\nNow playing \"{nowPlaying}\"");
+
         }
     }
     else if (menu == 5)
     {
-        Console.WriteLine("Closing the Music Player, bye!");
+        Console.WriteLine("\nClosing the Music Player, bye!");
 
         continueRunning = false;
     }
     else
     {
-        Console.WriteLine("Invalid selection, try again!");
+        Console.WriteLine("\nInvalid selection, try again!");
     }
 }
 
