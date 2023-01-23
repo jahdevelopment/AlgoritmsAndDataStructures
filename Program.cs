@@ -18,8 +18,6 @@ string nowPlaying = "";
 
 string nextToPlay = "";
 
-string previousSong = "";
-
 
 while (continueRunning)
 {
@@ -30,10 +28,6 @@ while (continueRunning)
     menu = Int32.Parse(Console.ReadLine());
 
     string[] playListArray = playList.ToArray();
-
-    //Console.WriteLine("\nChoose an option:\n\n  1. Add a song to your playlist\n  2. Play the next song in your playlist\n  3. Skip the next song\n  4. Rewind one song\n  5. Exit\n");
-
-    //menu= Int32.Parse(Console.ReadLine());
 
     if (menu == 1)
     {
@@ -95,6 +89,8 @@ while (continueRunning)
     }
     else if (menu == 3)
     {
+        ///////////// SKIP NEXT SONG
+
         if (playList.Count < 3)
         {
             Console.WriteLine("\nYou don't have enough songs to skip one. Try adding more to your playlist.");
@@ -114,6 +110,8 @@ while (continueRunning)
     }
     else if (menu == 4)
     {
+        ///////////// REWIND TO PREVIOUS SONG
+
         if (currentlyPlaying.Count <= 1)
         {
             Console.WriteLine("\nYou don't have enough songs to rewind one. Try adding more to your playlist.");
@@ -131,6 +129,8 @@ while (continueRunning)
     }
     else if (menu == 5)
     {
+        //////////// CLOSING THE APP
+        
         Console.WriteLine("\nClosing the Music Player, bye!");
 
         continueRunning = false;
